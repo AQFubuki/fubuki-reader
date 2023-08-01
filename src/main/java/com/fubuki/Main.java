@@ -1,10 +1,14 @@
 package com.fubuki;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.fubuki.controller.CategoryController;
 import com.fubuki.controller.TestController;
+import com.fubuki.entity.Book;
 import com.fubuki.entity.Category;
 import com.fubuki.entity.Test;
 import com.fubuki.mapper.TestMapper;
+import com.fubuki.service.BookService;
 import com.fubuki.service.CategoryService;
 import com.fubuki.service.TestService;
 import org.springframework.context.ApplicationContext;
@@ -15,16 +19,30 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
+
         //创建SpringIoC容器,并根据配置文件在容器中实例化对象
         ApplicationContext context=new ClassPathXmlApplicationContext(
-                "classpath:app*.xml");
-        CategoryService categoryService =
-                (CategoryService) context.getBean("categoryServiceImpl");
-        List<Category> categories = categoryService.selectAll();
-        for (Category category : categories) {
-            System.out.println(category);
+                "classpath:main*.xml");
+//        CategoryController controller=(CategoryController)
+//                context.getBean("categoryController");
+//        List<Category> categories=(List<Category>) controller.list();
+//        System.out.println(categories);
+
+        BookService bookService=(BookService)
+                context.getBean("bookServiceImpl");
+        IPage<Book> page = bookService
+                .selectPage(-1l, "quantity", 2, 10);
+        List<Book> records = page.getRecords();
+        for (Book record : records) {
+            System.out.println(record);
         }
-        //获取容器内所有beanId数组
+//        CategoryService categoryService =
+//                (CategoryService) context.getBean("categoryServiceImpl");
+//        List<Category> categories = categoryService.selectAll();
+//        for (Category category : categories) {
+//            System.out.println(category);
+//        }
+//        //获取容器内所有beanId数组
 //        String[] beanNames=context.getBeanDefinitionNames();
 //        for(String beanName:beanNames){
 //            System.out.println(beanName);
