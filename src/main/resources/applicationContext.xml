@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns:mvc="http://www.springframework.org/schema/mvc"
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns="http://www.springframework.org/schema/beans"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
             http://www.springframework.org/schema/beans/spring-beans.xsd
             http://www.springframework.org/schema/context
             http://www.springframework.org/schema/context/spring-context.xsd
-
-
+            http://www.springframework.org/schema/task
+            http://www.springframework.org/schema/task/spring-task.xsd
             http://www.springframework.org/schema/mvc
-            http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+            http://www.springframework.org/schema/mvc/spring-mvc.xsd
+            http://www.springframework.org/schema/tx
+            http://www.springframework.org/schema/tx/spring-tx.xsd">
     <context:component-scan base-package="com.fubuki"/>
 <!--    <mvc:annotation-driven>-->
 <!--        <mvc:message-converters>-->
@@ -40,13 +45,35 @@
     </bean>
     <!--2.配置SessionFactoryBean-->
     <!--SqlSessionFactoryBean用于根据配置信息创建SqlSessionFactory,不再需要我们自己编码创建-->
-    <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+<!--    <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">-->
+    <bean id="sessionFactory"
+          class="com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="mapperLocations" value="classpath:mappers/*.xml"/>
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
+
+        <!-- MyBaits Plus 3.4以后版本需要在MybatisSqlSessionFactoryBean.plugins属性中进行设置 -->
+        <property name="plugins">
+            <array>
+                <bean class="com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor">
+                    <property name="interceptors">
+                        <list>
+                            <bean class="com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor"/>
+                        </list>
+                    </property>
+                </bean>
+            </array>
+        </property>
     </bean>
     <!--3.配置Mapper扫描器-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.fubuki.mapper"/>
     </bean>
+
+    <!--定义事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+<!--    开启声明式事务-->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
 </beans>
