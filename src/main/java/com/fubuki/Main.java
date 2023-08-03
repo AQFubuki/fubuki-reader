@@ -7,14 +7,18 @@ import com.fubuki.controller.TestController;
 import com.fubuki.entity.Book;
 import com.fubuki.entity.Category;
 import com.fubuki.entity.Test;
+import com.fubuki.mapper.EvaluationMapper;
 import com.fubuki.mapper.TestMapper;
 import com.fubuki.service.BookService;
 import com.fubuki.service.CategoryService;
+import com.fubuki.service.EvaluationService;
 import com.fubuki.service.TestService;
+import com.fubuki.utils.ResponseUtils;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.List;
+import java.util.Map;
 
 public class Main {
 
@@ -23,19 +27,25 @@ public class Main {
         //创建SpringIoC容器,并根据配置文件在容器中实例化对象
         ApplicationContext context=new ClassPathXmlApplicationContext(
                 "classpath:main*.xml");
+        EvaluationService evaluationService=
+                (EvaluationService) context.getBean("evaluationServiceImpl");
+
+        List<Map> evaluations=evaluationService.selectByBookId(1l);
+        ResponseUtils resp = new ResponseUtils().put("list",evaluations);
+        System.out.println(resp.getData());
 //        CategoryController controller=(CategoryController)
 //                context.getBean("categoryController");
 //        List<Category> categories=(List<Category>) controller.list();
 //        System.out.println(categories);
 
-        BookService bookService=(BookService)
-                context.getBean("bookServiceImpl");
-        IPage<Book> page = bookService
-                .selectPage(-1l, "quantity", 2, 10);
-        List<Book> records = page.getRecords();
-        for (Book record : records) {
-            System.out.println(record);
-        }
+//        BookService bookService=(BookService)
+//                context.getBean("bookServiceImpl");
+//        IPage<Book> page = bookService
+//                .selectPage(-1l, "quantity", 2, 10);
+//        List<Book> records = page.getRecords();
+//        for (Book record : records) {
+//            System.out.println(record);
+//        }
 //        CategoryService categoryService =
 //                (CategoryService) context.getBean("categoryServiceImpl");
 //        List<Category> categories = categoryService.selectAll();
