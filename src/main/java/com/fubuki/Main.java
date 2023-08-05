@@ -9,10 +9,7 @@ import com.fubuki.entity.Category;
 import com.fubuki.entity.Test;
 import com.fubuki.mapper.EvaluationMapper;
 import com.fubuki.mapper.TestMapper;
-import com.fubuki.service.BookService;
-import com.fubuki.service.CategoryService;
-import com.fubuki.service.EvaluationService;
-import com.fubuki.service.TestService;
+import com.fubuki.service.*;
 import com.fubuki.utils.ResponseUtils;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -26,13 +23,16 @@ public class Main {
 
         //创建SpringIoC容器,并根据配置文件在容器中实例化对象
         ApplicationContext context=new ClassPathXmlApplicationContext(
-                "classpath:main*.xml");
-        EvaluationService evaluationService=
-                (EvaluationService) context.getBean("evaluationServiceImpl");
-
-        List<Map> evaluations=evaluationService.selectByBookId(1l);
-        ResponseUtils resp = new ResponseUtils().put("list",evaluations);
-        System.out.println(resp.getData());
+                "classpath:app*.xml");
+        MemberService memberService=
+                (MemberService) context.getBean("memberServiceImpl");
+        memberService.createMember("imooc_1","123456","依依不舍");
+//        EvaluationService evaluationService=
+//                (EvaluationService) context.getBean("evaluationServiceImpl");
+//
+//        List<Map> evaluations=evaluationService.selectByBookId(1l);
+//        ResponseUtils resp = new ResponseUtils().put("list",evaluations);
+//        System.out.println(resp.getData());
 //        CategoryController controller=(CategoryController)
 //                context.getBean("categoryController");
 //        List<Category> categories=(List<Category>) controller.list();

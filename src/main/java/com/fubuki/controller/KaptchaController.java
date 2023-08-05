@@ -16,7 +16,7 @@ import java.io.IOException;
 public class KaptchaController {
 
     private final Producer kaptchaProducer;
-@Autowired
+    @Autowired
     public KaptchaController(Producer kaptchaProducer) {
         this.kaptchaProducer = kaptchaProducer;
     }

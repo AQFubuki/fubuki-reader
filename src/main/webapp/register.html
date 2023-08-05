@@ -111,9 +111,20 @@
                             .then(function(response){
                                 const json = response.data;
                                 if(json.code == "0"){
-                                    console.info(json);
+                                    // console.info(json);
+                                    vant.Dialog.alert({
+                                        title:"用户注册成功",
+                                        message:"点击确定后跳转至登录界面"
+                                    }).then(function () {
+                                        window.location.href="./login.html";
+                                    })
                                 }else {
-                                    console.error(json);
+                                    // console.error(json);
+                                    objApp.reloadVerifyCode();
+                                    vant.Dialog.alert({
+                                        title:"用户注册失败",
+                                        message:json.message
+                                    })
                                 }
                             })
                     })
