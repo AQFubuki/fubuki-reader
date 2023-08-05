@@ -2,6 +2,7 @@ package com.fubuki.controller;
 
 
 import com.fubuki.entity.Member;
+import com.fubuki.entity.MemberReadState;
 import com.fubuki.service.MemberService;
 import com.fubuki.utils.ResponseUtils;
 import jakarta.servlet.http.HttpServletRequest;
@@ -76,6 +77,19 @@ public class MemberController {
             e.printStackTrace();
         }
         return resp;
+    }
 
+    @GetMapping("/select_read_state")
+    public ResponseUtils selectMemberReadState(Long bookId,Long memberId){
+        ResponseUtils resp;
+        try {
+            MemberReadState memberReadState=
+                    memberService.selectMemberReadState(bookId,memberId);
+            resp=new ResponseUtils().put("readState",memberReadState);
+        } catch (Exception e) {
+            resp=new ResponseUtils(e.getClass().getSimpleName(),e.getMessage());
+            e.printStackTrace();
+        }
+        return resp;
     }
 }

@@ -10,15 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99c0d972-fe14-4adc-b15e-07ebba475abe" name="更改" comment="用户状态">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/entity/MemberReadState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/mapper/MemberReadStateMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mappers/member_read_state.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fubuki/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/controller/MemberController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fubuki/newMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/newMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fubuki/entity/MemberReadState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/entity/MemberReadState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fubuki/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/service/MemberService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fubuki/service/impl/MemberServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/service/impl/MemberServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,8 +29,8 @@
       <list>
         <option value="spring-beans.schema" />
         <option value="JUnit5 Test Class" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -381,7 +380,7 @@
       <workItem from="1691192542975" duration="7058000" />
       <workItem from="1691202528088" duration="576000" />
       <workItem from="1691203120008" duration="1378000" />
-      <workItem from="1691215701112" duration="1503000" />
+      <workItem from="1691215701112" duration="4475000" />
     </task>
     <task id="LOCAL-00001" summary="实例化Service">
       <created>1690852992245</created>
@@ -425,11 +424,29 @@
       <option name="project" value="LOCAL" />
       <updated>1691195441692</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="用户状态">
+      <created>1691217222759</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1691217222759</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="实例化Service" />

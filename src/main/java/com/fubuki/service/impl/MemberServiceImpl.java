@@ -2,7 +2,9 @@ package com.fubuki.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.fubuki.entity.Member;
+import com.fubuki.entity.MemberReadState;
 import com.fubuki.mapper.MemberMapper;
+import com.fubuki.mapper.MemberReadStateMapper;
 import com.fubuki.service.MemberService;
 import com.fubuki.service.exception.MemberException;
 import com.fubuki.utils.Md5Utils;
@@ -20,10 +22,12 @@ import java.util.Random;
 public class MemberServiceImpl implements MemberService {
 
     private final MemberMapper memberMapper;
+    private final MemberReadStateMapper memberReadStateMapper;
 
     @Autowired
-    public MemberServiceImpl(MemberMapper memberMapper) {
+    public MemberServiceImpl(MemberMapper memberMapper, MemberReadStateMapper memberReadStateMapper) {
         this.memberMapper = memberMapper;
+        this.memberReadStateMapper = memberReadStateMapper;
     }
 
     @Transactional(rollbackFor = Exception.class)
@@ -73,5 +77,13 @@ public class MemberServiceImpl implements MemberService {
 //        wrapper.eq("member_id",memberId);
 //        return memberMapper.selectOne(wrapper);
         return memberMapper.selectById(memberId);
+    }
+
+    @Override
+    public MemberReadState selectMemberReadState(Long bookId, Long memberId) {
+        QueryWrapper<MemberReadState> wrapper = new QueryWrapper<>();
+        wrapper.eq("book_id", bookId);
+        wrapper.eq("member_id", memberId);
+        return memberReadStateMapper.selectOne(wrapper);
     }
 }

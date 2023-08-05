@@ -273,6 +273,25 @@
                                         console.error(json);
                                     }
                             })
+                        //只有在用户登录的状态下才需要去查询阅读状态
+                        axios.get("api/member/select_read_state?memberId="+mid
+                            +"&bookId="+bookId)
+                            .then(function (response) {
+                                const json=response.data;
+                                console.info(response);
+                                if(json.code == "0") {
+                                    console.info(json);
+                                    if (json.data.readState != null) {
+                                        objApp.state.readState = json.data.readState.readState;
+                                        console.info(objApp.state.readState);
+                                    } else {
+                                        objApp.state.readState = -1;
+                                        console.info(objApp.state.readState);
+                                    }
+                                }else{
+                                    console.error(json);
+                                }
+                            })
                     }
                 }
             };
