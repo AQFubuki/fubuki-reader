@@ -1,10 +1,12 @@
 package com.fubuki.controller;
 
 
+import com.fubuki.entity.Member;
 import com.fubuki.service.MemberService;
 import com.fubuki.utils.ResponseUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,5 +40,42 @@ public class MemberController {
             }
         }
         return resp;
+    }
+
+    @PostMapping("/check_login")
+    public ResponseUtils checkLogin(String username, String password , String nickname , String vc ,
+                                 HttpServletRequest request){
+        //获取验证码
+        String verifyCode = (String)request.getSession().getAttribute("kaptchaVerifyCode");
+        ResponseUtils resp;
+        if(vc == null || verifyCode == null || !vc.equalsIgnoreCase(verifyCode)){
+            resp = new ResponseUtils("VerifyCodeError", "验证码错误");
+        }else{
+            try {
+                //校验成功后检查用户名和密码
+                Member member = memberService.checkLogin(username, password);
+                member.setSalt(null);
+                member.setPassword(null);
+                resp = new ResponseUtils().put("member",member);
+            } catch (Exception e) {
+                e.printStackTrace();
+                resp=new ResponseUtils(e.getClass().getSimpleName(),e.getMessage());
+            }
+        }
+        return resp;
+    }
+
+    @GetMapping("/select_by_id")
+    public ResponseUtils selectById(Long memberId){
+        ResponseUtils resp=null;
+        try {
+            Member member= memberService.selectById(memberId);
+            resp=new ResponseUtils().put("member",member);
+        } catch (Exception e) {
+            resp=new ResponseUtils(e.getClass().getSimpleName(),e.getMessage());
+            e.printStackTrace();
+        }
+        return resp;
+
     }
 }

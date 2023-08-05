@@ -9,26 +9,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99c0d972-fe14-4adc-b15e-07ebba475abe" name="更改" comment="验证码的生成与校验">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/entity/Member.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/mapper/MemberMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/newMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/service/MemberService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/service/exception/MemberException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/service/impl/MemberServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mappers/member.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fubuki/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fubuki/controller/KaptchaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/controller/KaptchaController.java" afterDir="false" />
+    <list default="true" id="99c0d972-fe14-4adc-b15e-07ebba475abe" name="更改" comment="用户状态">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/entity/MemberReadState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fubuki/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/controller/MemberController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fubuki/utils/MD5Utils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fubuki/newMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/newMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fubuki/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/service/MemberService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fubuki/service/impl/MemberServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/service/impl/MemberServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,13 +69,14 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/soft/IDEA/JAVAPROJECT/fubuki-reader/src/main/resources/mappers&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/soft/IDEA/JAVAPROJECT/fubuki-reader/src/main/webapp&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -100,11 +91,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\soft\IDEA\JAVAPROJECT\fubuki-reader\src\main\webapp" />
       <recent name="D:\soft\IDEA\JAVAPROJECT\fubuki-reader\src\main\resources\mappers" />
       <recent name="D:\soft\IDEA\JAVAPROJECT\fubuki-reader\src\main\java\com\fubuki\utils" />
       <recent name="D:\soft\IDEA\JAVAPROJECT\fubuki-reader\src\main\java\com\fubuki\service\impl" />
       <recent name="D:\soft\IDEA\JAVAPROJECT\fubuki-reader\src\main\java\com\fubuki\service" />
-      <recent name="D:\soft\IDEA\JAVAPROJECT\fubuki-reader\src\main\java\com\fubuki\mapper" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -387,7 +378,10 @@
       <workItem from="1691117504827" duration="2596000" />
       <workItem from="1691130019058" duration="1510000" />
       <workItem from="1691131547388" duration="2001000" />
-      <workItem from="1691192542975" duration="2246000" />
+      <workItem from="1691192542975" duration="7058000" />
+      <workItem from="1691202528088" duration="576000" />
+      <workItem from="1691203120008" duration="1378000" />
+      <workItem from="1691215701112" duration="1503000" />
     </task>
     <task id="LOCAL-00001" summary="实例化Service">
       <created>1690852992245</created>
@@ -417,7 +411,21 @@
       <option name="project" value="LOCAL" />
       <updated>1691120094493</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="用户注册功能">
+      <created>1691195413255</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1691195413255</updated>
+    </task>
+    <task id="LOCAL-00006" summary="用户注册功能">
+      <created>1691195441692</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1691195441692</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -428,6 +436,8 @@
     <MESSAGE value="图示列表" />
     <MESSAGE value="评论区展示" />
     <MESSAGE value="验证码的生成与校验" />
-    <option name="LAST_COMMIT_MESSAGE" value="验证码的生成与校验" />
+    <MESSAGE value="用户注册功能" />
+    <MESSAGE value="用户状态" />
+    <option name="LAST_COMMIT_MESSAGE" value="用户状态" />
   </component>
 </project>

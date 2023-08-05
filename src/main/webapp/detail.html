@@ -40,7 +40,7 @@
                 </template>
                 <template #right>
                     <template v-if="state.isLogin">
-                        <img src="/images/user_icon.png" style="height:30px">{{member.nickname}}
+                        <img src="/images/user_icon.png" style="height:30px">{{state.member.nickname}}
                     </template>
                     <template v-if="!state.isLogin">
                         <img src="/images/user_icon.png" style="height: 30px">
@@ -260,6 +260,20 @@
                             console.error(json);
                         }
                     });
+
+                    const mid=sessionStorage.mid;
+                    if(mid!=null){
+                        axios.get("/api/member/select_by_id?memberId="+mid)
+                            .then(function(response){
+                                const json = response.data;
+                                    if(json.code == "0"){
+                                        objApp.state.isLogin = true;
+                                        objApp.state.member = json.data.member;
+                                    }else{
+                                        console.error(json);
+                                    }
+                            })
+                    }
                 }
             };
             const app = Vue.createApp(main);

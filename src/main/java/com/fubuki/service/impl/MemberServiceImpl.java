@@ -16,10 +16,11 @@ import java.util.List;
 import java.util.Random;
 
 @Service
-@Transactional(propagation = Propagation.NOT_SUPPORTED,readOnly = true)
+@Transactional(propagation = Propagation.NOT_SUPPORTED, readOnly = true)
 public class MemberServiceImpl implements MemberService {
 
     private final MemberMapper memberMapper;
+
     @Autowired
     public MemberServiceImpl(MemberMapper memberMapper) {
         this.memberMapper = memberMapper;
@@ -31,7 +32,7 @@ public class MemberServiceImpl implements MemberService {
         QueryWrapper<Member> wrapper = new QueryWrapper<>();
         wrapper.eq("username", username);
         List<Member> members = memberMapper.selectList(wrapper);
-        if(members.size() > 0 ){
+        if (members.size() > 0) {
             throw new MemberException("用户已存在");
         }
         Member member = new Member();
@@ -44,5 +45,33 @@ public class MemberServiceImpl implements MemberService {
         member.setPassword(md5);
         memberMapper.insert(member);
         return member;
+    }
+
+    @Override
+    public Member checkLogin(String username, String password) {
+        QueryWrapper<Member> wrapper = new QueryWrapper<>();
+        wrapper.eq("username", username);
+//        List<Member> members = memberMapper.selectList(wrapper);
+//        if (members.size() == 0) {
+//            throw new MemberException("用户不存在");
+//        }
+//        Member member = members.get(0);
+        Member member=memberMapper.selectOne(wrapper);
+        if (member == null) {
+            throw new MemberException("用户不存在");
+        }
+        String md5 = Md5Utils.md5Digest(password, member.getSalt());
+        if (!md5.equals(member.getPassword())) {
+            throw new MemberException("密码错误");
+        }
+        return member;
+    }
+
+    @Override
+    public Member selectById(Long memberId) {
+//        QueryWrapper<Member> wrapper = new QueryWrapper<>();
+//        wrapper.eq("member_id",memberId);
+//        return memberMapper.selectOne(wrapper);
+        return memberMapper.selectById(memberId);
     }
 }

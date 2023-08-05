@@ -10,6 +10,7 @@ public class newMain {
                 "classpath:m*.xml");
         MemberService memberService=
                 (MemberService) context.getBean("memberServiceImpl");
-        memberService.createMember("fubuki","123456","依依不舍");
+       // memberService.createMember("fubuki","123456","依依不舍");
+        memberService.checkLogin("fubuki","12376456");
     }
 }
