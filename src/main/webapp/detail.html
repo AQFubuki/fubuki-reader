@@ -61,7 +61,8 @@
                     <div style="font-size: 16px;margin-top:5px;">{{book.subTitle}}</div>
                     <div style="padding:10px">
                         <template v-if="state.readState == -1">
-                            <van-button @click="updateReadState(1)" icon="like-o" size="small" style="margin-right: 10px"
+                            <van-button @click="updateReadState(1)" icon="like-o" size="small"
+                                        style="margin-right: 10px"
                                         type="default">想看
                             </van-button>
                             <van-button @click="updateReadState(2)" icon="passed" size="small" type="default">看过
@@ -76,7 +77,8 @@
                         </template>
 
                         <template v-if="state.readState == 2">
-                            <van-button @click="updateReadState(1)" icon="like-o" size="small" style="margin-right: 10px"
+                            <van-button @click="updateReadState(1)" icon="like-o" size="small"
+                                        style="margin-right: 10px"
                                         type="default">想看
                             </van-button>
                             <van-button @click="updateReadState(2)" icon="checked" size="small" type="success">看过
@@ -99,24 +101,24 @@
                     <van-button @click="showDialog()" size="small" style="width:60px" type="success">评价</van-button>
                 </template>
             </van-nav-bar>
-<!--            <template v-for="evaluation,index in evaluationList">-->
-<!--                <div style="border-bottom: 1px solid #cccccc">-->
-<!--                    <div style="padding: 10px;">-->
-<!--&lt;!&ndash;                        <span style="margin-right: 20px">{{evaluation.strCreateTime}}</span>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <span style="margin-right: 20px">{{evaluation.member.nickname}}</span>&ndash;&gt;-->
-<!--                        <span style="margin-right: 20px">{{evaluation.ct}}</span>-->
-<!--                        <span style="margin-right: 20px">{{evaluation.nickname}}</span>-->
-<!--                        <van-rate allow-half color="#ffd21e" readonly v-model="evaluation.score"-->
-<!--                                  void-icon="star"></van-rate>-->
-<!--                        <van-button @click="enjoy(index)" icon="like-o" size="small" style="width:40px;float:right"-->
-<!--                                    type="success">{{evaluation.enjoy}}-->
-<!--                        </van-button>-->
-<!--                    </div>-->
-<!--                    <div style="padding: 10px;">-->
-<!--                        {{evaluation.content}}-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </template>-->
+            <!--            <template v-for="evaluation,index in evaluationList">-->
+            <!--                <div style="border-bottom: 1px solid #cccccc">-->
+            <!--                    <div style="padding: 10px;">-->
+            <!--&lt;!&ndash;                        <span style="margin-right: 20px">{{evaluation.strCreateTime}}</span>&ndash;&gt;-->
+            <!--&lt;!&ndash;                        <span style="margin-right: 20px">{{evaluation.member.nickname}}</span>&ndash;&gt;-->
+            <!--                        <span style="margin-right: 20px">{{evaluation.ct}}</span>-->
+            <!--                        <span style="margin-right: 20px">{{evaluation.nickname}}</span>-->
+            <!--                        <van-rate allow-half color="#ffd21e" readonly v-model="evaluation.score"-->
+            <!--                                  void-icon="star"></van-rate>-->
+            <!--                        <van-button @click="enjoy(index)" icon="like-o" size="small" style="width:40px;float:right"-->
+            <!--                                    type="success">{{evaluation.enjoy}}-->
+            <!--                        </van-button>-->
+            <!--                    </div>-->
+            <!--                    <div style="padding: 10px;">-->
+            <!--                        {{evaluation.content}}-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--            </template>-->
             <!--短评列表,通过迭代EvaluationList实现-->
             <template v-for="evaluation,index in evaluationList">
                 <div style="border-bottom: 1px solid #cccccc">
@@ -126,8 +128,11 @@
                         <!-- 用户昵称 -->
                         <span style="margin-right: 20px">{{evaluation.nickname}}</span>
                         <!-- 星型分数 -->
-                        <van-rate v-model="evaluation.score" color="#ffd21e" void-icon="star" readonly allow-half></van-rate>
-                        <van-button icon="like-o" @click="enjoy(index)" type="success" size="small" style="width:40px;float:right" >{{evaluation.enjoy}}</van-button>
+                        <van-rate allow-half color="#ffd21e" readonly v-model="evaluation.score"
+                                  void-icon="star"></van-rate>
+                        <van-button @click="enjoy(index)" icon="like-o" size="small" style="width:40px;float:right"
+                                    type="success">{{evaluation.enjoy}}
+                        </van-button>
                     </div>
                     <!-- 评论内容 -->
                     <div style="padding: 10px;">
@@ -226,6 +231,36 @@
                     }
                     , updateReadState: function (readState) {
                         //更新阅读状态
+                        const mid = sessionStorage.mid;
+                        const bookId = getQueryString("bid");
+                        const objApp = this;
+                        //只有在用户登录的状态下才可以更改
+                        if (!objApp.state.isLogin) {
+                            warnLogin("登录后才能进行评论哦");
+                            return;
+                        }
+                        if (readState == objApp.state.readState) {
+                            //再次点击取消选择
+                            readState = -1;
+                        }
+
+                        const params = new URLSearchParams();
+                        params.append("memberId", mid);
+                        params.append("bookId", bookId);
+                        params.append("readState", readState);
+
+                        // axios.get("api/member/change_read_state?memberId=" + mid
+                        //     + "&bookId=" + bookId + "&readState=" + readState)
+                        axios.post("/api/member/update_read_state", params)
+                            .then(function (response) {
+                                const json = response.data;
+                                if (json.code == "0") {
+                                    objApp.state.readState = json.data.readState.readState;
+                                } else {
+                                    console.error(json);
+                                }
+                            })
+
                     }
                     , onSubmit: function (formName) {
                         //提交短评功能
@@ -248,11 +283,11 @@
                         }
                     });
 
-                    const evaluationUri="/api/evaluation/list?bookId="+bookId;
+                    const evaluationUri = "/api/evaluation/list?bookId=" + bookId;
                     axios.get(evaluationUri).then(function (response) {
                         const json = response.data;
                         if (json.code == "0") {
-                            json.data.list.forEach(function (item){
+                            json.data.list.forEach(function (item) {
                                 item.ct = formatDate(item.create_time);
                                 objApp.evaluationList.push(item);
                             })
@@ -261,25 +296,25 @@
                         }
                     });
 
-                    const mid=sessionStorage.mid;
-                    if(mid!=null){
-                        axios.get("/api/member/select_by_id?memberId="+mid)
-                            .then(function(response){
+                    const mid = sessionStorage.mid;
+                    if (mid != null) {
+                        axios.get("/api/member/select_by_id?memberId=" + mid)
+                            .then(function (response) {
                                 const json = response.data;
-                                    if(json.code == "0"){
-                                        objApp.state.isLogin = true;
-                                        objApp.state.member = json.data.member;
-                                    }else{
-                                        console.error(json);
-                                    }
+                                if (json.code == "0") {
+                                    objApp.state.isLogin = true;
+                                    objApp.state.member = json.data.member;
+                                } else {
+                                    console.error(json);
+                                }
                             })
                         //只有在用户登录的状态下才需要去查询阅读状态
-                        axios.get("api/member/select_read_state?memberId="+mid
-                            +"&bookId="+bookId)
+                        axios.get("api/member/select_read_state?memberId=" + mid
+                            + "&bookId=" + bookId)
                             .then(function (response) {
-                                const json=response.data;
+                                const json = response.data;
                                 console.info(response);
-                                if(json.code == "0") {
+                                if (json.code == "0") {
                                     console.info(json);
                                     if (json.data.readState != null) {
                                         objApp.state.readState = json.data.readState.readState;
@@ -288,7 +323,7 @@
                                         objApp.state.readState = -1;
                                         console.info(objApp.state.readState);
                                     }
-                                }else{
+                                } else {
                                     console.error(json);
                                 }
                             })

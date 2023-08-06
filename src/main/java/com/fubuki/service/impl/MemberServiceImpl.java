@@ -86,4 +86,64 @@ public class MemberServiceImpl implements MemberService {
         wrapper.eq("member_id", memberId);
         return memberReadStateMapper.selectOne(wrapper);
     }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public MemberReadState createMemberReadState(Long bookId, Long memberId, int readState) {
+        QueryWrapper<MemberReadState> wrapper = new QueryWrapper<>();
+        wrapper.eq("book_id", bookId);
+        wrapper.eq("member_id", memberId);
+        List<MemberReadState> mrss = memberReadStateMapper.selectList(wrapper);
+        if (mrss.size() > 0) {
+            throw new MemberException("评价状态已存在");
+        }
+        MemberReadState memberReadState = new MemberReadState();
+        memberReadState.setMemberId(memberId);
+        memberReadState.setBookId(bookId);
+        memberReadState.setReadState(readState);
+        memberReadState.setCreateTime(new Date());
+        memberReadStateMapper.insert(memberReadState);
+        return memberReadState;
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public MemberReadState updateMemberReadState(Long bookId, Long memberId, int readState) {
+        QueryWrapper<MemberReadState> wrapper = new QueryWrapper<>();
+        wrapper.eq("book_id", bookId);
+        wrapper.eq("member_id", memberId);
+        List<MemberReadState> mrss = memberReadStateMapper.selectList(wrapper);
+        if (mrss.size() == 0) {
+            //其实也可以把createMemberReadState整合进这里
+            throw new MemberException("评价状态不存在");
+        }
+        MemberReadState memberReadState=mrss.get(0);
+        memberReadState.setReadState(readState);
+        memberReadState.setCreateTime(new Date());
+        memberReadStateMapper.updateById(memberReadState);
+        return memberReadState;
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public MemberReadState updateMemberReadState2(Long bookId, Long memberId, int readState) {
+        QueryWrapper<MemberReadState> wrapper = new QueryWrapper<>();
+        wrapper.eq("book_id", bookId);
+        wrapper.eq("member_id", memberId);
+        MemberReadState memberReadState = memberReadStateMapper.selectOne(wrapper);
+        if (memberReadState == null) {
+            memberReadState=new MemberReadState();
+            memberReadState.setMemberId(memberId);
+            memberReadState.setBookId(bookId);
+            memberReadState.setReadState(readState);
+            memberReadState.setCreateTime(new Date());
+            memberReadStateMapper.insert(memberReadState);
+        }else {
+            memberReadState.setReadState(readState);
+            memberReadState.setCreateTime(new Date());
+            memberReadStateMapper.updateById(memberReadState);
+        }
+        return memberReadState;
+    }
+
 }
