@@ -9,11 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99c0d972-fe14-4adc-b15e-07ebba475abe" name="更改" comment="阅读状态">
+    <list default="true" id="99c0d972-fe14-4adc-b15e-07ebba475abe" name="更改" comment="更新阅读状态">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fubuki/controller/EvalutionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/controller/EvalutionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fubuki/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/controller/MemberController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fubuki/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/service/MemberService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fubuki/service/impl/MemberServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/service/impl/MemberServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fubuki/entity/Evaluation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/entity/Evaluation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fubuki/service/EvaluationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/service/EvaluationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fubuki/service/impl/EvaluationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/service/impl/EvaluationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/evaluation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/evaluation.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/detail.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -379,6 +382,7 @@
       <workItem from="1691203120008" duration="1378000" />
       <workItem from="1691215701112" duration="5227000" />
       <workItem from="1691301058138" duration="3907000" />
+      <workItem from="1691306273224" duration="3075000" />
     </task>
     <task id="LOCAL-00001" summary="实例化Service">
       <created>1690852992245</created>
@@ -436,7 +440,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691220207789</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="更新阅读状态">
+      <created>1691306327034</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1691306327034</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -461,6 +472,7 @@
     <MESSAGE value="用户注册功能" />
     <MESSAGE value="用户状态" />
     <MESSAGE value="阅读状态" />
-    <option name="LAST_COMMIT_MESSAGE" value="阅读状态" />
+    <MESSAGE value="更新阅读状态" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新阅读状态" />
   </component>
 </project>

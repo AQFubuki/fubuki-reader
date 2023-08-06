@@ -1,8 +1,10 @@
 package com.fubuki.controller;
 
 
+import com.fubuki.entity.Evaluation;
 import com.fubuki.entity.Member;
 import com.fubuki.entity.MemberReadState;
+import com.fubuki.service.EvaluationService;
 import com.fubuki.service.MemberService;
 import com.fubuki.utils.ResponseUtils;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,10 +19,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/member")
 public class MemberController {
     private final MemberService memberService;
+    private final EvaluationService evaluationService;
 
     @Autowired
-    public MemberController(MemberService memberService) {
+    public MemberController(MemberService memberService, EvaluationService evaluationService) {
         this.memberService = memberService;
+        this.evaluationService = evaluationService;
     }
 
     @PostMapping("/registe")
@@ -126,6 +130,19 @@ public class MemberController {
         } catch (Exception e) {
             resp = new ResponseUtils(e.getClass().getSimpleName(), e.getMessage());
             e.printStackTrace();
+        }
+        return resp;
+    }
+
+    @PostMapping("/evaluate")
+    public ResponseUtils evaluation(Long bookId, String content, Integer score, Long memberId){
+        ResponseUtils resp = null;
+        try {
+            Evaluation evaluation= evaluationService.addEvaluation(bookId, content, score, memberId);
+            resp = new ResponseUtils().put("evaluation",evaluation);
+        }catch (Exception e){
+            e.printStackTrace();
+            resp = new ResponseUtils(e.getClass().getSimpleName(), e.getMessage());
         }
         return resp;
     }

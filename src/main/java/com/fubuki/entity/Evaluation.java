@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.util.Date;
 
-@TableName("evaluation.xml")
+@TableName("evaluation")
 public class Evaluation {
     @TableId(type = IdType.AUTO)
     private Long evaluationId;

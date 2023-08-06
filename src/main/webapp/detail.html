@@ -264,6 +264,38 @@
                     }
                     , onSubmit: function (formName) {
                         //提交短评功能
+                        const form = this.$refs[formName];
+                        const objApp = this;
+                        const memberId = sessionStorage.mid;
+                        const bookId = getQueryString("bid");
+                        //只有在用户登录的状态下才可以评论
+                        if (!objApp.state.isLogin) {
+                            warnLogin("登录后才能进行评论哦");
+                            return;
+                        }
+                        form.validate().then(function(){
+                            //这里组织表单验证后评论内容
+                            const params = new URLSearchParams();
+                            params.append("bookId", bookId);
+                            params.append("content", objApp.form.content);
+                            params.append("score", objApp.form.score);
+                            params.append("memberId", memberId);
+
+                            //axios.post("/api/evaluation/add" , params)
+                            axios.post("/api/member/evaluate" , params)
+                                .then(function(response){
+                                    const json = response.data;
+                                    if(json.code == "0"){
+                                        //这里可以改为关闭表单并只刷新评论区，
+                                        window.location.href = "/detail.html?bid=" + bookId;
+                                    }else{
+                                        vant.Dialog.alert({
+                                            title : "评论提交失败",
+                                            message : json.message
+                                        })
+                                    }
+                                })
+                        }).catch(function(e){console.debug("表单验证失败",e)});
                     }
                     , enjoy: function (index) {
                         //点赞功能

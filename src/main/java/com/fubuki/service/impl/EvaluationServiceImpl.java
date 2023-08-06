@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -26,6 +27,22 @@ public class EvaluationServiceImpl implements EvaluationService {
     @Override
     public List<Map> selectByBookId(Long bookId) {
         return evaluationMapper.selectByBookId(bookId);
+    }
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public Evaluation addEvaluation(Long bookId, String content, Integer score, Long memberId) {
+        Evaluation evaluation=new Evaluation();
+        evaluation.setContent(content);
+        evaluation.setBookId(bookId);
+        evaluation.setScore(score);
+        evaluation.setMemberId(memberId);
+        evaluation.setCreateTime(new Date());
+        evaluation.setEnjoy(0);
+        evaluation.setState("enable");
+        evaluation.setDisableReason(null);
+        evaluation.setDisableTime(null);
+        evaluationMapper.insert(evaluation);
+        return evaluation;
     }
 
 //    @Override
