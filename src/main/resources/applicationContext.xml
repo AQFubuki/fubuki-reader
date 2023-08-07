@@ -104,4 +104,7 @@
             </bean>
         </property>
     </bean>
+
+    <!-- 启用注解形式的定时任务功能 -->
+    <task:annotation-driven/>
 </beans>

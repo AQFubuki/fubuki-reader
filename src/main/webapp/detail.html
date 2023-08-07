@@ -229,6 +229,25 @@
                             window.location.href = "/login.html";
                         }
                     }
+                    , showEvaluations: function (bookId,isFlush) {
+                        const objApp=this;
+                        //刷新评论区
+                        const evaluationUri = "/api/evaluation/list?bookId=" + bookId;
+                        axios.get(evaluationUri).then(function (response) {
+                            const json = response.data;
+                            if (json.code == "0") {
+                                if(isFlush){
+                                    objApp.evaluationList.splice(0, objApp.evaluationList.length);
+                                }
+                                json.data.list.forEach(function (item) {
+                                    item.ct = formatDate(item.create_time);
+                                    objApp.evaluationList.push(item);
+                                })
+                            } else {
+                                console.error(json);
+                            }
+                        });
+                    }
                     , updateReadState: function (readState) {
                         //更新阅读状态
                         const mid = sessionStorage.mid;
@@ -287,7 +306,11 @@
                                     const json = response.data;
                                     if(json.code == "0"){
                                         //这里可以改为关闭表单并只刷新评论区，
-                                        window.location.href = "/detail.html?bid=" + bookId;
+                                        //window.location.href = "/detail.html?bid=" + bookId;
+                                        objApp.state.dialogVisible = false;
+                                        objApp.form.score = 5;
+                                        objApp.form.content = "";
+                                        objApp.showEvaluations(bookId , true);
                                     }else{
                                         vant.Dialog.alert({
                                             title : "评论提交失败",
@@ -299,6 +322,31 @@
                     }
                     , enjoy: function (index) {
                         //点赞功能
+                        const objApp = this;
+                        const bookId = getQueryString("bid");
+                        const evaluation=objApp.evaluationList[index];
+                        //只有在用户登录的状态下才可以点赞
+                        if (!objApp.state.isLogin) {
+                            warnLogin("登录后才能进行点赞哦");
+                            return;
+                        }
+                        console.info(evaluation);
+                        const params = new URLSearchParams();
+                        params.append("evaluationId", evaluation.evaluation_id);
+
+                        axios.post("/api/member/enjoy" , params)
+                            .then(function(response){
+                                const json = response.data;
+                                if(json.code == "0"){
+                                    //objApp.showEvaluations(bookId,true);
+                                    evaluation.enjoy+=1;
+                                }else{
+                                    vant.Dialog.alert({
+                                        title : "点赞失败",
+                                        message : json.message
+                                    })
+                                }
+                            })
                     }
                 }
                 , mounted() {

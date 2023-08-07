@@ -147,4 +147,16 @@ public class MemberController {
         return resp;
     }
 
+    @PostMapping("/enjoy")
+    public ResponseUtils enjoy(Long evaluationId){
+        ResponseUtils resp = null;
+        try {
+            Evaluation evaluation= evaluationService.enjoy(evaluationId);
+            resp = new ResponseUtils().put("evaluation",evaluation);
+        }catch (Exception e){
+            e.printStackTrace();
+            resp = new ResponseUtils(e.getClass().getSimpleName(), e.getMessage());
+        }
+        return resp;
+    }
 }

@@ -11,4 +11,5 @@ public interface EvaluationService {
 
     public Evaluation addEvaluation(Long bookId, String content,
                                     Integer score, Long memberId);
+    public Evaluation enjoy(Long evaluationId);
 }

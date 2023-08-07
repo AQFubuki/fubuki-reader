@@ -3,6 +3,7 @@ package com.fubuki.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.fubuki.entity.Category;
 import com.fubuki.entity.Evaluation;
+import com.fubuki.entity.MemberReadState;
 import com.fubuki.mapper.EvaluationMapper;
 import com.fubuki.service.EvaluationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,17 @@ public class EvaluationServiceImpl implements EvaluationService {
         evaluation.setDisableReason(null);
         evaluation.setDisableTime(null);
         evaluationMapper.insert(evaluation);
+        return evaluation;
+    }
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public Evaluation enjoy(Long evaluationId) {
+//        QueryWrapper<Evaluation> wrapper = new QueryWrapper<>();
+//        wrapper.eq("evaluation_id",evaluationId);
+//        Evaluation evaluation = evaluationMapper.selectOne(wrapper);
+        Evaluation evaluation = evaluationMapper.selectById(evaluationId);
+        evaluation.setEnjoy(evaluation.getEnjoy()+1);
+        evaluationMapper.updateById(evaluation);
         return evaluation;
     }
 
