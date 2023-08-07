@@ -9,15 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99c0d972-fe14-4adc-b15e-07ebba475abe" name="更改" comment="提交评论">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/task/ComputeTask.java" afterDir="false" />
+    <list default="true" id="99c0d972-fe14-4adc-b15e-07ebba475abe" name="更改" comment="点赞功能与定时任务">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fubuki/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/controller/MemberController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fubuki/service/EvaluationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/service/EvaluationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fubuki/service/impl/EvaluationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/service/impl/EvaluationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logback.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fubuki/mapper/BookMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/mapper/BookMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fubuki/service/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/service/BookService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fubuki/service/impl/BookServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/service/impl/BookServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fubuki/task/ComputeTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/task/ComputeTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/book.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/book.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,27 +64,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "D:/soft/IDEA/JAVAPROJECT/fubuki-reader/src/main/java/com/fubuki",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "模块",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.23904975",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
-    "spring.configuration.checksum": "f1a38d22eeae1d6aced084be87241491",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/soft/IDEA/JAVAPROJECT/fubuki-reader/src/main/java/com/fubuki&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.23904975&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;f1a38d22eeae1d6aced084be87241491&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\soft\IDEA\JAVAPROJECT\fubuki-reader\src\main\java\com\fubuki" />
@@ -383,7 +381,7 @@
       <workItem from="1691301058138" duration="3907000" />
       <workItem from="1691306273224" duration="3294000" />
       <workItem from="1691320117243" duration="3315000" />
-      <workItem from="1691375465267" duration="2172000" />
+      <workItem from="1691375465267" duration="3978000" />
     </task>
     <task id="LOCAL-00001" summary="实例化Service">
       <created>1690852992245</created>
@@ -455,7 +453,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691309368277</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="点赞功能与定时任务">
+      <created>1691378084272</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1691378084272</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -482,6 +487,7 @@
     <MESSAGE value="阅读状态" />
     <MESSAGE value="更新阅读状态" />
     <MESSAGE value="提交评论" />
-    <option name="LAST_COMMIT_MESSAGE" value="提交评论" />
+    <MESSAGE value="点赞功能与定时任务" />
+    <option name="LAST_COMMIT_MESSAGE" value="点赞功能与定时任务" />
   </component>
 </project>

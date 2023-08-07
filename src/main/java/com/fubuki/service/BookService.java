@@ -15,4 +15,5 @@ public interface BookService {
      */
     public IPage<Book> selectPage(Long categoryId, String order, Integer page, Integer rows);
     public Book selectById(long id);
+    public void updateScore();
 }

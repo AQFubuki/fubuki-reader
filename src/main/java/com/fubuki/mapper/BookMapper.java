@@ -5,4 +5,5 @@ import com.fubuki.entity.Book;
 
 
 public interface BookMapper extends BaseMapper<Book> {
+    public void updateScore();
 }

@@ -48,4 +48,9 @@ public class BookServiceImpl implements BookService {
     public Book selectById(long id) {
         return bookMapper.selectById(id);
     }
+
+    @Override
+    public void updateScore() {
+        bookMapper.updateScore();
+    }
 }

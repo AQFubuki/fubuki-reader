@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fubuki.mapper.BookMapper">
+    <update id="updateScore">
+        update book b
+        set evaluation_score=(select ifnull(avg(score), 0)
+                              from evaluation e
+                              where e.book_id = b.book_id
+                                and e.state = 'enable'),
+            evaluation_quantity=(
+                select ifnull(count(*), 0)
+                from evaluation e
+                where e.book_id = b.book_id
+                  and e.state = 'enable'
+                )
+    </update>
 
 </mapper>
