@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Map;
+
 
 @Service
 @Transactional(propagation = Propagation.NOT_SUPPORTED,readOnly = true)
@@ -49,8 +51,15 @@ public class BookServiceImpl implements BookService {
         return bookMapper.selectById(id);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void updateScore() {
         bookMapper.updateScore();
+    }
+
+    @Override
+    public IPage<Map> selectBookMap(Integer page, Integer rows) {
+        IPage p = new Page(page, rows);
+        return bookMapper.selectBookMap(p);
     }
 }

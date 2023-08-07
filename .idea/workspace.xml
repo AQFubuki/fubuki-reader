@@ -9,13 +9,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99c0d972-fe14-4adc-b15e-07ebba475abe" name="更改" comment="点赞功能与定时任务">
+    <list default="true" id="99c0d972-fe14-4adc-b15e-07ebba475abe" name="更改" comment="动态计算图书分数和评价人数">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/controller/mangement/MBookController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/management/book.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/upload/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/fubuki_reader_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/fubuki_reader_war_exploded.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fubuki/mapper/BookMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/mapper/BookMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fubuki/service/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/service/BookService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fubuki/service/impl/BookServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/service/impl/BookServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fubuki/task/ComputeTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/task/ComputeTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/book.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/book.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +79,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/soft/IDEA/JAVAPROJECT/fubuki-reader/src/main/java/com/fubuki&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/soft/IDEA/JAVAPROJECT/fubuki-reader/src/main/webapp&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -87,11 +94,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\soft\IDEA\JAVAPROJECT\fubuki-reader\src\main\java\com\fubuki" />
       <recent name="D:\soft\IDEA\JAVAPROJECT\fubuki-reader\src\main\webapp" />
+      <recent name="D:\soft\IDEA\JAVAPROJECT\fubuki-reader\src\main\java\com\fubuki\controller" />
+      <recent name="D:\soft\IDEA\JAVAPROJECT\fubuki-reader\src\main\java\com\fubuki" />
       <recent name="D:\soft\IDEA\JAVAPROJECT\fubuki-reader\src\main\resources\mappers" />
       <recent name="D:\soft\IDEA\JAVAPROJECT\fubuki-reader\src\main\java\com\fubuki\utils" />
-      <recent name="D:\soft\IDEA\JAVAPROJECT\fubuki-reader\src\main\java\com\fubuki\service\impl" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -382,6 +389,9 @@
       <workItem from="1691306273224" duration="3294000" />
       <workItem from="1691320117243" duration="3315000" />
       <workItem from="1691375465267" duration="3978000" />
+      <workItem from="1691389295247" duration="3178000" />
+      <workItem from="1691392530718" duration="2572000" />
+      <workItem from="1691395174446" duration="2164000" />
     </task>
     <task id="LOCAL-00001" summary="实例化Service">
       <created>1690852992245</created>
@@ -460,7 +470,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691378084272</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="动态计算图书分数和评价人数">
+      <created>1691389346397</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1691389346398</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -488,6 +505,7 @@
     <MESSAGE value="更新阅读状态" />
     <MESSAGE value="提交评论" />
     <MESSAGE value="点赞功能与定时任务" />
-    <option name="LAST_COMMIT_MESSAGE" value="点赞功能与定时任务" />
+    <MESSAGE value="动态计算图书分数和评价人数" />
+    <option name="LAST_COMMIT_MESSAGE" value="动态计算图书分数和评价人数" />
   </component>
 </project>

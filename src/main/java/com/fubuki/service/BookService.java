@@ -3,6 +3,8 @@ package com.fubuki.service;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.fubuki.entity.Book;
 
+import java.util.Map;
+
 
 public interface BookService {
     /**
@@ -16,4 +18,12 @@ public interface BookService {
     public IPage<Book> selectPage(Long categoryId, String order, Integer page, Integer rows);
     public Book selectById(long id);
     public void updateScore();
+
+    /**
+     * 分页查询
+     * @param page 页数
+     * @param rows 每页行数
+     * @return
+     */
+    public IPage<Map> selectBookMap(Integer page, Integer rows);
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="https://jakarta.ee/xml/ns/jakartaee"
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
          version="5.0">
 
@@ -16,6 +16,20 @@
             <param-value>classpath:app*.xml</param-value>
         </init-param>
         <load-on-startup>0</load-on-startup>
+
+        <!--       MultipartFile核心配置     -->
+        <multipart-config>
+            <!--         上传文件最大多少   -->
+            <max-file-size>10485760</max-file-size>
+            <!--         最大请求大小   -->
+            <max-request-size>10485760</max-request-size>
+            <!--         多大以上的文件可以上传   -->
+            <file-size-threshold>0</file-size-threshold>
+        </multipart-config>
+        <!--        ————————————————-->
+        <!--        版权声明：本文为CSDN博主「person想要改变」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。-->
+        <!--        原文链接：https://blog.csdn.net/m0_64332518/article/details/129106419-->
+
     </servlet>
     <servlet-mapping>
         <servlet-name>spring-mvc</servlet-name>
@@ -25,7 +39,7 @@
     <filter>
         <filter-name>characterFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-<!--        //<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>-->
+        <!--        //<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>-->
         <init-param>
             <param-name>encoding</param-name>
             <param-value>UTF-8</param-value>
