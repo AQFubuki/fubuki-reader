@@ -1,0 +1,17 @@
+{
+  "code": "0",
+  "message": "success",
+  "data": {
+    "book": {
+      "bookId": 51,
+      "bookName": "测试图书1",
+      "subTitle": "测试子标题",
+      "author": "测试作者",
+      "cover": "img-cover",
+      "description": "<img src='img-cover'><h3 id=\"课程亮点\">课程亮点</h3>",
+      "categoryId": 3,
+      "evaluationScore": 0.0,
+      "evaluationQuantity": 0
+    }
+  }
+}

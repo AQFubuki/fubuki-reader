@@ -173,7 +173,7 @@
                 //默认上传时使用的参数名
                 editor.customConfig.uploadFileName = 'img';//设置图片上传参数
                 editor.create();//创建wangEditor
-                //设置初始内容
+                //设置初始内容。当修改图书内容时，将原信息回填到文本编辑器中
                 editor.txt.html(this.form.description);
             }
             , createBook() { //点击新增按钮,显示"新增图书"表单
@@ -194,14 +194,77 @@
                     type: "warning"
                 }).then(() => {
                     //处理删除操作
+                    const params = new URLSearchParams();
+                    params.append("bookId", row.bookId);
+                    axios.post("/api/management/book/delete",params)
+                        .then(function(response){
+                            const json = response.data;
+                            if(json.code == "0"){
+                                ElementPlus.ElMessage.success({
+                                    message : "数据删除成功",
+                                    type : "success"
+                                })
+                                //刷新当前页
+                                objApp.changePage(objApp.page);
+                            }else{
+                                console.error(json);
+                                ElementPlus.ElMessage.error({
+                                    message : json.message,
+                                    type : "error"
+                                })
+                            }
+                        })
+
                 });
+            }
+            ,onSubmit1: function (formName) {
+                console.info("点击提交");
             }
             , onSubmit: function (formName) {
                 const objApp = this;
                 const formData = this.form;
+                console.info("点击提交");
                 this.$refs[formName].validate(function (valid) {
                     if (valid) {
+                        console.info("表单验证成功");
                         //表单提交处理
+                        const description = editor.txt.html();
+                        const params = new URLSearchParams();
+                        //只有更新数据需要添加id
+                        if(objApp.dialogModel=="update"){
+                            params.append("bookId", objApp.form.bookId);
+                        }
+                        params.append("bookName", objApp.form.bookName);
+                        params.append("subTitle", objApp.form.subTitle);
+                        params.append("description", description);
+                        params.append("author", objApp.form.author);
+                        params.append("categoryId", objApp.form.categoryId);
+                        axios.post("/api/management/book/" + objApp.dialogModel,params)
+                            .then(function(response){
+                                console.info("axios");
+                                const json = response.data;
+                                if(json.code == "0"){
+                                    ElementPlus.ElMessage.success({
+                                        message : "数据处理成功",
+                                        type : "success"
+                                    })
+                                    //关闭文本编辑框
+                                    objApp.dialogFormVisible = false;
+                                    if(objApp.dialogModel == "create"){
+                                        //跳转到最后一页
+                                        objApp.changePage(objApp.pageCount);
+                                    }else if(objApp.dialogModel == "update"){
+                                        //更新刷新当前页
+                                        objApp.changePage(objApp.page);
+                                    }
+                                }else{
+                                    console.error(json);
+                                    ElementPlus.ElMessage.error({
+                                        message : json.message,
+                                        type : "error"
+                                    })
+                                }
+                            })
                     }
                 });
             }

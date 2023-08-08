@@ -1,0 +1,5 @@
+{
+  "code": "ImageNotFoundError",
+  "message": "图书描述未包含封面图片",
+  "data": {}
+}

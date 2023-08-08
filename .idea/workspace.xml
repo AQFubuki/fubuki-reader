@@ -9,20 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99c0d972-fe14-4adc-b15e-07ebba475abe" name="更改" comment="动态计算图书分数和评价人数">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/controller/mangement/MBookController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/management/book.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/upload/readme.md" afterDir="false" />
+    <list default="true" id="99c0d972-fe14-4adc-b15e-07ebba475abe" name="更改" comment="上传图片">
       <change beforePath="$PROJECT_DIR$/.idea/artifacts/fubuki_reader_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/fubuki_reader_war_exploded.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fubuki/mapper/BookMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/mapper/BookMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fubuki/controller/mangement/MBookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/controller/mangement/MBookController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fubuki/service/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/service/BookService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fubuki/service/impl/BookServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fubuki/service/impl/BookServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/book.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/book.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/management/book.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/management/book.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,10 +131,10 @@
     <configuration name="generated-requests | #4" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="4" requestIdentifier="#4" runType="运行单个请求">
       <method v="2" />
     </configuration>
-    <configuration name="generated-requests | #6" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="6" requestIdentifier="#6" runType="运行单个请求">
+    <configuration name="generated-requests | #7" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="7" requestIdentifier="#7" runType="运行单个请求">
       <method v="2" />
     </configuration>
-    <configuration name="generated-requests | #7" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="7" requestIdentifier="#7" runType="运行单个请求">
+    <configuration name="generated-requests | #8" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="8" requestIdentifier="#8" runType="运行单个请求">
       <method v="2" />
     </configuration>
     <configuration name="Tomcat 10.1.9" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.9" ALTERNATIVE_JRE_ENABLED="false">
@@ -338,7 +332,7 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="HTTP 请求.generated-requests | #6" />
+      <item itemvalue="HTTP 请求.generated-requests | #8" />
       <item itemvalue="HTTP 请求.generated-requests | #7" />
       <item itemvalue="HTTP 请求.generated-requests | #4" />
       <item itemvalue="Tomcat 服务器.Tomcat 10.1.9" />
@@ -347,11 +341,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="HTTP 请求.generated-requests | #8" />
         <item itemvalue="应用程序.newMain" />
         <item itemvalue="应用程序.Main" />
         <item itemvalue="HTTP 请求.generated-requests | #7" />
         <item itemvalue="HTTP 请求.generated-requests | #4" />
-        <item itemvalue="HTTP 请求.generated-requests | #6" />
       </list>
     </recent_temporary>
   </component>
@@ -391,7 +385,10 @@
       <workItem from="1691375465267" duration="3978000" />
       <workItem from="1691389295247" duration="3178000" />
       <workItem from="1691392530718" duration="2572000" />
-      <workItem from="1691395174446" duration="2164000" />
+      <workItem from="1691395174446" duration="2385000" />
+      <workItem from="1691406840049" duration="982000" />
+      <workItem from="1691474080936" duration="6622000" />
+      <workItem from="1691499617630" duration="18000" />
     </task>
     <task id="LOCAL-00001" summary="实例化Service">
       <created>1690852992245</created>
@@ -477,7 +474,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691389346398</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="上传图片">
+      <created>1691397536931</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1691397536931</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -506,6 +510,7 @@
     <MESSAGE value="提交评论" />
     <MESSAGE value="点赞功能与定时任务" />
     <MESSAGE value="动态计算图书分数和评价人数" />
-    <option name="LAST_COMMIT_MESSAGE" value="动态计算图书分数和评价人数" />
+    <MESSAGE value="上传图片" />
+    <option name="LAST_COMMIT_MESSAGE" value="上传图片" />
   </component>
 </project>
